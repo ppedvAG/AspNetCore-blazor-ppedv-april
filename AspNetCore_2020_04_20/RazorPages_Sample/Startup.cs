@@ -40,6 +40,8 @@ namespace RazorPages_Sample
                 app.UseHsts();
             }
 
+            AppDomain.CurrentDomain.SetData("Bildverzeichnis", env.WebRootPath);
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 

@@ -3,7 +3,6 @@
 @{
     ViewData["Title"] = "RazorSamples";
 }
-
 <h1>RazorSamples</h1>
 
 @implements IDisposable
@@ -19,6 +18,7 @@
 
 @* Ausgabe von @ - Symbol + Username(Variable) Ausgabe *@
 <p>@@@Model.Username</p>
+<p>Max.Mustermann@@gmail.com</p>
 
 @* 2.)Implizite Razor-Ausdrücke - Implizite Razor-Ausdrücke beginnen mit @ gefolgt von C#-Code: *@
 <p>@DateTime.Now</p>
@@ -133,7 +133,7 @@ else
     {
           new Person("Weston", 33),
           new Person("Johnathon", 41),
-                                                                     };
+                                                                             };
 }
 
 @* 7.2.2 @foreach *@
@@ -202,6 +202,11 @@ finally
     public void Dispose()
     {
         _isDisposed = true;
+    }
+
+    public void komplizierteKalkulation()
+    {
+
     }
 }
 

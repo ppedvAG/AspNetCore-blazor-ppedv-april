@@ -11,10 +11,15 @@ namespace RazorPages_Sample.Pages
     public class PrivacyModel : PageModel
     {
         private readonly ILogger<PrivacyModel> _logger;
-
+        public int Ergebnis { get; set;}
         public PrivacyModel(ILogger<PrivacyModel> logger)
         {
             _logger = logger;
+        }
+
+        public void OnGetHannes()
+        {
+            Ergebnis = 42;
         }
 
         public void OnGet()
