@@ -1,0 +1,47 @@
+﻿@model IEnumerable<AspNetCore_Razor_WithMVC.Models.ToDo>
+
+@{
+    ViewData["Title"] = "ShowList";
+}
+
+<h1>ShowList</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Beschreibung)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BisWann)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IstAktiv)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Beschreibung)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BisWann)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IstAktiv)
+            </td>
+            
+        </tr>
+}
+
+</tbody>
+</table>

@@ -1,0 +1,36 @@
+﻿@model AspNetCore_Razor_WithMVC.Models.ToDo
+@{
+    ViewData["Title"] = "ShowToDoWithRazor";
+}
+
+<h1>ShowToDoWithRazor</h1>
+
+
+@Model.Title 
+
+@{ 
+    var aufgabe = new ToDo();
+
+    void RenderTitle(string title)
+    {
+        <p>Title: @title</p>
+    }
+
+    RenderTitle("Testen");
+    RenderTitle("Kochen");
+
+}
+
+@functions
+{
+    public string GetHello()
+    {
+        return "Hallo Welt";
+    }
+}
+
+@for (int i = 0; i < length; i++)
+{
+
+}
+
