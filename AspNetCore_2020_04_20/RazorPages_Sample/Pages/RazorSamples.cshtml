@@ -1,0 +1,246 @@
+﻿@page
+@model RazorPages_Sample.Pages.RazorSamplesModel
+@{
+    ViewData["Title"] = "RazorSamples";
+}
+
+<h1>RazorSamples</h1>
+
+@implements IDisposable
+
+<h1>RazorSyntaxSamples</h1>
+
+@* 1.) Einfache Ausgabe *@
+<p>@Model.Username</p>
+
+
+@* Verwenden Sie ein zweites @-Symbol, um im Razor-Markup ein @-Symbol mit Escapezeichen zu versehen: *@
+<p>@@Model.Username</p>
+
+@* Ausgabe von @ - Symbol + Username(Variable) Ausgabe *@
+<p>@@@Model.Username</p>
+
+@* 2.)Implizite Razor-Ausdrücke - Implizite Razor-Ausdrücke beginnen mit @ gefolgt von C#-Code: *@
+<p>@DateTime.Now</p>
+<p>@DateTime.IsLeapYear(2016)</p>
+
+@* 2.1) Mit Ausnahme des C#-Schlüsselworts await dürfen implizite Ausdrücke keine Leerzeichen enthalten.
+    Wird die C#-Anweisung eindeutig beendet, können auch Leerzeichen verwendet werden: *@
+
+@*<p>@await DoSomething("hello","world")</p>*@
+
+@* 2.2) Implizite Ausdrücke dürfen keine C#-Generics enthalten, da die Zeichen innerhalb der Klammern (<>) als HTML-Tag interpretiert werden.
+    Der folgende Code ist ungültig: *@
+@*<p>@GenericMethod<int>()</p>*@
+@* Aufrufen von GenericMethoden müssen über Explizite Razor-Ausdrücke erfolgen *@
+
+
+@* 3.) Explizite Razor-Ausdrücke  - Explizite Razor-Ausdrücke bestehen aus einem @-Symbol mit ausgeglichener Klammer. *@
+<p>Last week this time: @(DateTime.Now - TimeSpan.FromDays(7))</p>
+@* Jeglicher Inhalt innerhalb der @()-Klammer wird ausgewertet und in der Ausgabe gerendert. *@
+
+@* 3.1 Die im vorherigen Abschnitt beschriebenen impliziten Ausdrücke dürfen grundsätzlich keine Leerzeichen enthalten.
+    Im folgenden Code wird eine Woche nicht von der aktuellen Uhrzeit abgezogen: *@
+<p>Last week: @DateTime.Now</p>
+@* Der Code rendert den folgenden HTML-Code: -> <p>Last week: 7/7/2016 4:39:52 PM - TimeSpan.FromDays(7)</p> *@
+
+@{
+    var joe = new Person("Joe", 33);
+
+
+    void RenderName(string name)
+    {
+        <p>Name: <strong>@name</strong></p>
+    }
+
+    RenderName("Mahatma Gandhi");
+    RenderName("Martin Luther King, Jr.");
+}
+
+
+
+<div>From method: @GetHello()</div>
+@*https://docs.microsoft.com/de-de/aspnet/core/mvc/views/razor?view=aspnetcore-3.1*@
+@functions
+{
+    public string GetHello()
+    {
+        return "Hello";
+    }
+}
+
+
+@* 4.0 Codieren von Ausdrücken *@
+
+@* C#-Ausdrücke, die als Zeichenfolge ausgewertet werden, werden HTML-codiert.
+    C#-Ausdrücke, die als IHtmlContent ausgewertet werden, werden direkt durch IHtmlContent.WriteTo gerendert.
+    C#-Ausdrücke, die nicht als IHtmlContent ausgewertet werden, werden durch ToString in eine Zeichenfolge konvertiert und vor dem Rendern codiert. *@
+
+@* 4.1 Beispiel: *@
+@("<i>Hello World</i>")
+@* 4.2 Html Helper Html.Raw
+    Die Ausgabe HtmlHelper.Raw wird nicht codiert, sondern als HTML-Markup gerendert. *@
+@Html.Raw("<i>Hello World</i>")
+
+
+@for (int y = 0; y < Model.People.Length; y++)
+{
+    var person = Model.People[y];
+    <text>Name: @person.Name</text>
+}
+
+
+
+@functions {
+    private int value = 2;
+}
+@if (value % 2 == 0)
+{
+    <p>The value was even.</p>
+}
+
+@* 7.1.2 else und else if erfordern kein @-Symbol: *@
+@if (value % 2 == 0)
+{
+    <p>The value was even.</p>
+}
+else if (value >= 1337)
+{
+    <p>The value is large.</p>
+}
+else
+{
+    <p>The value is odd and small.</p>
+}
+
+
+@*  7.1.3 switch-Anweisung *@
+@switch (value)
+{
+    case 1:
+        <p>The value is 1!</p>
+        break;
+    case 1337:
+        <p>Your number is 1337!</p>
+        break;
+    default:
+        <p>Your number wasn't 1 or 1337.</p>
+        break;
+}
+
+@{
+    var people = new Person[]
+    {
+          new Person("Weston", 33),
+          new Person("Johnathon", 41),
+                                                                     };
+}
+
+@* 7.2.2 @foreach *@
+@foreach (var person in people)
+{
+    <p>Name: @person.Name</p>
+    <p>Age: @person.Age</p>
+}
+
+@* 7.2.3 @while *@
+@{var i = 0; }
+@while (i < people.Length)
+{
+    var person = people[i];
+    <p>Name: @person.Name</p>
+    <p>Age: @person.Age</p>
+
+    i++;
+}
+
+@* 7.2.4 @do while *@
+
+@{i = 0; }
+@do
+{
+    var person = people[i];
+    <p>Name: @person.Name</p>
+    <p>Age: @person.Age</p>
+
+    i++;
+} while (i < people.Length);
+
+
+
+@using (Html.BeginForm())
+{
+    <div>
+        Email: <input type="email" id="Email" value="">
+        <button>Register</button>
+    </div>
+}
+
+@try
+{
+    throw new InvalidOperationException("You did something invalid.");
+}
+catch (Exception ex)
+{
+    <p>The exception message: @ex.Message</p>
+}
+finally
+{
+    <p>The finally statement.</p>
+}
+
+@* 7.5 @lock *@
+@lock (Model.Username)
+{
+    // Do critical section work
+}
+
+<h1>Example</h1>
+
+@functions {
+    private bool _isDisposed;
+    public void Dispose()
+    {
+        _isDisposed = true;
+    }
+}
+
+@* 8.4 @inject
+    Mit der @inject-Anweisung kann die Razor Page einen Dienst aus dem Dienstcontainer in eine Ansicht einfügen.
+    Weitere Informationen finden Sie unter Dependency Injection in Ansichten.
+*@
+
+
+
+@* 8.5 @namespace
+
+
+*@
+
+@* 8.6 @page
+    Die @page-Anweisung hat abhängig vom Typ der Datei, in der Sie verwendet wird, unterschiedliche Auswirkungen.
+    Für die Anweisung gilt:
+
+    -   In einer CSHTML-Datei gibt sie an, dass die Datei eine Razor-Seite ist. Weitere Informationen finden Sie unter Benutzerdefinierte Routen und Einführung in Razor Pages in ASP.NET Core.
+    -   Gibt an, dass eine Razor-Komponente Anforderungen direkt verarbeiten soll. Weitere Informationen finden Sie unter ASP.net Core Blazor Routing.
+*@
+
+@* 8.7 @section
+
+    Dieses Szenario gilt nur für MVC-Ansichten und Razor Pages (.cshtml).
+    Die @section-Anweisung wird in Verbindung mit MVC- und Razor Pages-Layouts verwendet, damit Ansichten Seiten Inhalte in verschiedenen Teilen
+    der HTML-Seite rendern können. Weitere Informationen finden Sie unter Layout in ASP.NET Core.
+*@
+
+@* 8.8 @using
+
+    Die @using-Anweisung fügt die C#-Anweisung usingder generierten Ansicht hinzu:
+*@
+
+@using System.IO
+@{
+    var dir = Directory.GetCurrentDirectory();
+}
+<p>@dir</p>
+
+
