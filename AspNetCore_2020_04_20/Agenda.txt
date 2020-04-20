@@ -1,0 +1,19 @@
+Dienst: 
+
+MVC: 
+- Dependency Injections -> IoC 
+- Logging -> Serilog
+- PartialViews
+- DynamicView
+- StateManagement (Sessions, ViewBag, ViewData) 
+- EF Core 
+- EF + MVC = Bearbeitung von Datensätzen
+
+
+Mittwoch:
+Authentifizierung mit AD
+Routing
+WebAPI + (Swagger) 
+Client Aufrufe einer WebAPI
+Architektur, welche Fails gibt es in MVC
+gRPC 

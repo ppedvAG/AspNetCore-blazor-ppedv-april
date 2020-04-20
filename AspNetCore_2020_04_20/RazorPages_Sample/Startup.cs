@@ -2,12 +2,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DependencyInjections.GuteBeispiel;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using RazorPages_Sample.Pages.Modul04;
 
 namespace RazorPages_Sample
 {
@@ -24,6 +26,7 @@ namespace RazorPages_Sample
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
+            services.AddSingleton<ICar>
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -48,6 +51,13 @@ namespace RazorPages_Sample
             app.UseRouting();
 
             app.UseAuthorization();
+
+
+
+            app.MapWhen(context => context.Request.Path.ToString().Contains("imagegen"), subapp =>
+            {
+                subapp.UseThumbnailGen();
+            });
 
             app.UseEndpoints(endpoints =>
             {
