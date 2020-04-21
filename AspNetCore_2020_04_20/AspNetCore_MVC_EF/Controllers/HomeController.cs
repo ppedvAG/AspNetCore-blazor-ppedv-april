@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using AspNetCore_MVC_EF.Models;
+using Microsoft.AspNetCore.Http;
+using System.Text.Json;
 
 namespace AspNetCore_MVC_EF.Controllers
 {
@@ -25,6 +27,13 @@ namespace AspNetCore_MVC_EF.Controllers
 
         public IActionResult Privacy()
         {
+
+            string name = HttpContext.Session.GetString("Name");
+            int age = HttpContext.Session.GetInt32("Age").Value;
+
+            string jsonString = HttpContext.Session.GetString("neuerBlock");
+            Blog blog = JsonSerializer.Deserialize<Blog>(jsonString);
+
             return View();
         }
 

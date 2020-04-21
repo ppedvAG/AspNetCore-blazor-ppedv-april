@@ -1,12 +1,12 @@
 Dienst: 
 
 MVC: 
-- EF Core 
-- EF + MVC = Bearbeitung von Datensätzen
-- Validierung
-- PartialViews
-- DynamicView
-- StateManagement (Sessions, ViewBag, ViewData) 
+- EF Core [x]
+- EF + MVC = Bearbeitung von Datensätzen [x]
+- Validierung [x]
+- PartialViews [x]
+- DynamicView [x]
+- StateManagement (Sessions, ViewBag, ViewData)  [x]
 - Logging -> Serilog
 
 
@@ -14,9 +14,11 @@ MVC:
 
 
 Mittwoch:
-Authentifizierung mit AD
-Routing
 WebAPI + (Swagger) 
 Client Aufrufe einer WebAPI
+
+Authentifizierung mit AD
+Routing
+
 Architektur, welche Fails gibt es in MVC
 gRPC 

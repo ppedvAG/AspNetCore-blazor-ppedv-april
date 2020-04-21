@@ -27,6 +27,8 @@ namespace AspNetCore_MVC_EF
         {
             services.AddControllersWithViews();
 
+            services.AddSession();
+
             services.AddDbContext<BlogDbContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("BlogDbContext")));
         }
@@ -46,7 +48,7 @@ namespace AspNetCore_MVC_EF
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
+            app.UseSession();
             app.UseRouting();
 
             app.UseAuthorization();

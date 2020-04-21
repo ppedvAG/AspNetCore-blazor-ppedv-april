@@ -37,7 +37,6 @@ namespace AspNetCore_MVC_EF.Controllers
 
            //Blog blog1 = await _context.Blog.SingleOrDefaultAs(m => m.Id == id);
 
-           
 
             if (blog == null)
             {
