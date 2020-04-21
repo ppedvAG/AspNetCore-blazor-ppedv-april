@@ -26,7 +26,14 @@ namespace RazorPages_Sample
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
-            services.AddSingleton<ICar>
+
+
+            services.AddSingleton<ICar, Car>();
+            services.AddTransient<ICarService, CarService>();
+            services.AddScoped<ICarService, CarService>();
+
+            //AddSingleton<IOperationSingleton, Operation>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

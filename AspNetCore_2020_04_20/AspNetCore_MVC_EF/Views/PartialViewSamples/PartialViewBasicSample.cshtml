@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewData["Title"] = "PartialViewBasicSample";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>PartialViewBasicSample</h1>
+
+
+<partial name="_Zeit" />
+
+
+@{Html.RenderPartial("_Zeit");}
+
+<!-- Absoluter Pfad zur PartialView-->
+@*<partial name="~/Views/Shared/_Address.cshtml" />*@
+
+<!-- relativer Pfad zur PartialView-->
+@*<partial name="../Blog/_LinkToBlockView.cshtml" />*@

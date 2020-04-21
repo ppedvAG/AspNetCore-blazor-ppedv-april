@@ -1,13 +1,16 @@
 Dienst: 
 
 MVC: 
-- Dependency Injections -> IoC 
-- Logging -> Serilog
+- EF Core 
+- EF + MVC = Bearbeitung von Datensätzen
+- Validierung
 - PartialViews
 - DynamicView
 - StateManagement (Sessions, ViewBag, ViewData) 
-- EF Core 
-- EF + MVC = Bearbeitung von Datensätzen
+- Logging -> Serilog
+
+
+
 
 
 Mittwoch:

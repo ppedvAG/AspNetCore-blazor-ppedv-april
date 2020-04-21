@@ -2,6 +2,6 @@
 {
     public interface ICarService
     {
-        void BuyCar(ICar car;
+        void BuyCar(ICar car);
     }
 }

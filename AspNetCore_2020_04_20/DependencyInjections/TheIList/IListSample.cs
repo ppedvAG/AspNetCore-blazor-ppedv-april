@@ -11,7 +11,6 @@ namespace DependencyInjections.TheIList
             List<string> list = new List<string>();
 
             IList<string> list2 = new List<string>();
-
         }
     }
 }
