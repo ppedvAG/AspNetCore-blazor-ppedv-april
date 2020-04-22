@@ -21,7 +21,6 @@ Swagger:
 
 Swashbuckle.AspNetCore -> https://docs.microsoft.com/de-de/aspnet/core/tutorials/getting-started-with-swashbuckle?view=aspnetcore-3.1&tabs=visual-studio
 
-
 grpc:
 https://grpc.io/
 https://grpc.io/blog/grpc-on-dotnetcore/
