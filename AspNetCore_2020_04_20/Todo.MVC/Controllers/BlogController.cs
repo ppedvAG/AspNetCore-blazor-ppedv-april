@@ -16,11 +16,9 @@ namespace Todo.MVC.Controllers
 {
     public class BlogController : Controller
     {
-        private readonly BlogDbContext _context;
 
-        public BlogController(BlogDbContext context)
+        public BlogController()
         {
-            _context = context;
         }
 
         // GET: Blog
@@ -209,14 +207,7 @@ namespace Todo.MVC.Controllers
 
             string result = response.Content.ReadAsStringAsync().Result;
 
-
-
             return RedirectToAction(nameof(Index));
-        }
-
-        private bool BlogExists(int id)
-        {
-            return _context.Blog.Any(e => e.Id == id);
         }
     }
 }

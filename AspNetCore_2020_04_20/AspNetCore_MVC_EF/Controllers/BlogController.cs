@@ -35,7 +35,7 @@ namespace AspNetCore_MVC_EF.Controllers
 
             Blog blog = await _context.Blog.FirstOrDefaultAsync(m => m.Id == id);
 
-           //Blog blog1 = await _context.Blog.SingleOrDefaultAs(m => m.Id == id);
+            //Blog blog1 = await _context.Blog.SingleOrDefaultAs(m => m.Id == id);
 
 
             if (blog == null)

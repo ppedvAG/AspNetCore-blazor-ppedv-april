@@ -1,4 +1,41 @@
+Einstiegskurs:
 
+Referent: Kevin Winter
+Email: KevinW@ppedv.de
+
+Blog von PPEDV: blog.ppedv.de
 
 Einfacher Einstieg in Authentification
 ->https://docs.microsoft.com/de-de/aspnet/core/security/authentication/identity?view=aspnetcore-3.1&tabs=visual-studio
+
+WebAPI:
+
+Weitere Pattern:
+- HATEOAS https://code-maze.com/hateoas-aspnet-core-web-api/
+- Repo -> https://github.com/CodeMazeBlog/advanced-rest-concepts-aspnetcore/tree/hateoas-end
+- Data-Shaping: https://code-maze.com/data-shaping-aspnet-core-webapi/
+- Repo -> https://github.com/CodeMazeBlog/advanced-rest-concepts-aspnetcore/tree/datashaping-end
+
+Swagger:
+Übersicht -> https://docs.microsoft.com/de-de/aspnet/core/tutorials/web-api-help-pages-using-swagger?view=aspnetcore-3.1
+
+Swashbuckle.AspNetCore -> https://docs.microsoft.com/de-de/aspnet/core/tutorials/getting-started-with-swashbuckle?view=aspnetcore-3.1&tabs=visual-studio
+
+
+grpc:
+https://grpc.io/
+https://grpc.io/blog/grpc-on-dotnetcore/
+
+grpc in Browser-Anwendungen
+https://docs.microsoft.com/de-de/aspnet/core/grpc/browser?view=aspnetcore-3.1
+
+Repository zu Grpc.Core
+https://github.com/grpc/grpc/tree/master/src/csharp
+
+
+Youtube: (Tim Corey) 
+https://www.youtube.com/channel/UC-ptWR16ITQyYOglXyQmpzw
+
+Julia Lernmann
+https://thedatafarm.com/
+

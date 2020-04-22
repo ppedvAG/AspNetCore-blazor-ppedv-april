@@ -10,6 +10,7 @@ using TodoApi.Data;
 
 namespace TodoApi.Controllers
 {
+    [Produces("application/json")]
     [Route("api/[controller]")]
     [ApiController]
     public class BlogController : ControllerBase
@@ -22,6 +23,10 @@ namespace TodoApi.Controllers
         }
 
         // GET: api/Blog
+        /// <summary>
+        /// Gebe mir eine Liste von Blogs zurück
+        /// </summary>
+        /// <returns>IEnumerable Blog </returns>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Blog>>> GetBlog()
         {
@@ -29,6 +34,12 @@ namespace TodoApi.Controllers
         }
 
         // GET: api/Blog/5
+
+        /// <summary>
+        /// Lese Blog-Entity aus
+        /// </summary>
+        /// <param name="id">Blog.Id</param>
+        /// <returns>Blog</returns>
         [HttpGet("{id}")]
         public async Task<ActionResult<Blog>> GetBlog(int id)
         {
@@ -45,6 +56,12 @@ namespace TodoApi.Controllers
         // PUT: api/Blog/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
+        /// <summary>
+        /// LaLeLu
+        /// </summary>
+        /// <param name="id">Blog Id</param>
+        /// <param name="blog">asdasdfasdf</param>
+        /// <returns></returns>
         [HttpPut("{id}")]
         public async Task<IActionResult> PutBlog(int id, Blog blog)
         {
@@ -74,10 +91,28 @@ namespace TodoApi.Controllers
             return NoContent();
         }
 
+
+
+
+
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     POST /Blog
+        ///     {
+        ///        "id": 1,
+        ///        "name": "Blog1",
+        ///        "isComplete": true
+        ///     }
+        ///
+        /// </remarks>
+
         // POST: api/Blog
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPost]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<Blog>> PostBlog(Blog blog)
         {
             _context.Blog.Add(blog);

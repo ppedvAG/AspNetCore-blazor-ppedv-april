@@ -1,0 +1,32 @@
+
+
+UI 
+
+IBlogService blockService = new MochService();
+blocService.GebeAlleBlogObjekte();
+
+----------------------------------------------------------------
+Service Layer
+
+Contract First = WFC z.b benutzt ein interface und gibt die Methoden der Schnittstelle vor. 
+
+public interface IBlogService
+{
+	List<Blog> GebeAlleBlogObjekte();
+
+	Blog GetBlogById(int id);
+}
+
+public class BlogService : IBlogService
+{
+	public List<Blog> GebeAlleBlogObjekte()
+	{
+		
+
+	}
+}
+
+
+----------------------------------------------------------------
+
+DataLayer 
