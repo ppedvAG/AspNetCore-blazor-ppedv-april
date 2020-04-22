@@ -7,18 +7,25 @@ MVC:
 - PartialViews [x]
 - DynamicView [x]
 - StateManagement (Sessions, ViewBag, ViewData)  [x]
-- Logging -> Serilog
+
+
+
+
 
 
 
 
 
 Mittwoch:
-WebAPI + (Swagger) 
-Client Aufrufe einer WebAPI
 
-Authentifizierung mit AD
 Routing
+Logging -> Serilog
 
-Architektur, welche Fails gibt es in MVC
+Authentifizierung
+WebAPI + "(Swagger)" 
+Client Aufrufe einer WebAPI
 gRPC 
+
+
+
+

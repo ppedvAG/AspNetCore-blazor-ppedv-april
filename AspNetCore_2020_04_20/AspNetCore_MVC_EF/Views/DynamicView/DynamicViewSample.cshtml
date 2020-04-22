@@ -1,0 +1,39 @@
+﻿@using AspNetCore_MVC_EF.Models;
+
+@{
+    ViewData["Title"] = "DynamicViewSample";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>DynamicViewSample</h1>
+
+<table>
+    <tr>
+        <th>Title</th>
+        <th>Content</th>
+    </tr>
+    @foreach (Blog currentBlog in Model.Blogs)
+    {
+        <tr>
+            <td>@currentBlog.Title</td>
+            <td>@currentBlog.Content</td>
+        </tr>
+    }
+</table>
+
+<h2>Comments List</h2>
+
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+    </tr>
+    @foreach (Comment currentComment in Model.Comments)
+    {
+        <tr>
+            <td>@currentComment.CreatedBy</td>
+            <td>@Html.Raw(currentComment.Text)</td>
+        </tr>
+    }
+</table>
+

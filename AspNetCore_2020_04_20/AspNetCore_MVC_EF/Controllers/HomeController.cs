@@ -8,6 +8,7 @@ using Microsoft.Extensions.Logging;
 using AspNetCore_MVC_EF.Models;
 using Microsoft.AspNetCore.Http;
 using System.Text.Json;
+using Serilog;
 
 namespace AspNetCore_MVC_EF.Controllers
 {
@@ -22,6 +23,8 @@ namespace AspNetCore_MVC_EF.Controllers
 
         public IActionResult Index()
         {
+
+            Log.Information("HomeController.Index wurde aufgerufen");
             return View();
         }
 
